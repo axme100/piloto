@@ -358,21 +358,26 @@ class: center, middle, inverse
 # Ítem léxico
 
 ---
+class: center
 
-#### Figuras 11: Nube de palabra de los ítems léxicos del grupo CHI-IN-SITU
+.pull-left[
+#### Figura 11: Nube de palabra de los ítems léxicos del grupo CHI-IN-SITU
 ```{r, echo=FALSE}
-# To have these be saved into a word documnet check out the following post:
-# https://stackoverflow.com/questions/47850921/is-there-any-way-to-show-a-wordcloud2-in-rmarkdown-as-a-pdf-or-word-file
-wordCloudDataOne <- dDataCHISITU %>%
-  select(Word) %>%
-  group_by(Word) %>%
-  count(Word) %>%
-  arrange(desc(n))
-
-wordcloud2(wordCloudDataOne)
+wordcloud2(wordCloudDataOne, shape="diamond")
 ```
+]
+.pull-right[
+#### Tabla 7: Los ítems léxicos del grupo CHI-IN-CDMX
+```{r echo=FALSE}
+kable(wordCloudDataOne) %>%
+  kable_styling() %>%
+  scroll_box(width = "100%", height = "400px")
+```
+]
 ---
+class: center
 
+.pull-left[
 #### Figuras 12: Nube de palabra de los ítems léxicos del grupo CHI-EN-CDMX
 ```{r, echo=FALSE}
 wordClouDataTwo <- dDataCHICDMX %>%
@@ -380,9 +385,24 @@ wordClouDataTwo <- dDataCHICDMX %>%
   group_by(Word) %>%
   count(Word) %>%
   arrange(desc(n))
-wordcloud2(wordClouDataTwo, size = .75)
+wordcloud2(wordClouDataTwo, shape="diamond")
 ```
+]
+
+.pull-right[
+#### Tabla 8: Los ítems léxicos del grupo CHI-EN-CDMX con una frecuencia igual o mayor a tres
+```{r, echo=FALSE}
+kable(wordClouDataTwo) %>%
+  kable_styling() %>%
+  scroll_box(width = "100%", height = "400px")
+```
+]
+
 ---
+
+class: center
+
+.pull-left[
 #### Figuras 13: Nube de palabra de los ítems léxicos del grupo CDMX-IN-SITU
 ```{r, echo=FALSE}
 wordCloudDataThree <- dDataCDMXSITU %>%
@@ -390,8 +410,46 @@ wordCloudDataThree <- dDataCDMXSITU %>%
   group_by(Word) %>%
   count(Word) %>%
   arrange(desc(n))
-wordcloud2(wordCloudDataThree, size = .75)
+wordcloud2(wordCloudDataThree, shape="diamond")
 ```
+]
+
+.pull-right[
+#### Tabla 9: Los ítems léxicos del grupo CHI-EN-CDMX con una frecuencia igual o mayor a tres
+```{r echo=FALSE}
+kable(wordCloudDataThree) %>%
+  kable_styling() %>%
+  scroll_box(width = "100%", height = "400px")
+```
+]
+
+---
+
+class: center, middle, inverse
+
+# Estadística inferencial
+
+---
+
+class: center, middle, inverse
+
+# Métodos no paramétricos
+
+---
+
+.pull-left[
+#### Figuras 14: Distribución de la variable dependiente (izquierda); distribución normal (derecha)
+```{r echo=FALSE}
+p1 <- ggplot(data = dData, aes(x = intensityDif)) + geom_density()
+p2 <- ggplot(data = data.frame(x = c(-3, 3)), aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1)) + ylab("")
+grid.arrange(p1, p2, nrow = 1)
+```
+]
+
+.pull-right[
+- Los métodos no paramétricos no asumen que los datos siguen alguna distribución
+`r Citep(myBib, 'baayen_analyzing_2008')` p.77
 
 ---
 
