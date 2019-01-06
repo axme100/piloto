@@ -447,16 +447,120 @@ grid.arrange(p1, p2, nrow = 1)
 ```
 ]
 
+<br>
+<br>
+<br>
+
 .pull-right[
-- Los métodos no paramétricos no asumen que los datos siguen alguna distribución
+- Los métodos no paramétricos no asumen que los datos siguen alguna distribución específica
 `r Citep(myBib, 'baayen_analyzing_2008')` p.77
+
+- Suelen ser muy útiles para analizar datos sociolingüísticos, ya que dichos datos tienden a ser desordenados entre y dentro de los individuos `r Citep(myBib, 'tagliamonte_variationist_2012')`
+
+]
 
 ---
 
-# References
+class: center, inverse, middle
 
-```{r, 'refs', results='asis', echo=FALSE}
-PrintBibliography(myBib)
+# Bosques aletorios
+---
+
+#### Figuras 15: Bosque aleatorio generado con LVS, variables lingüísticas y sociales
+```{r, out.width = "100%", out.height="375px", echo=FALSE}
+knitr::include_graphics("rf1.png")
 ```
 
 ---
+
+class: center, inverse, middle
+
+# Árbol de inferencia condicional
+
+---
+
+#### Figuras 16: Árbol de inferencia condicional con las variables lingüísticas y sociales juntas
+```{r, echo=FALSE, message=FALSE, fig.width=18, fig.height=10}
+# When using the partykit package the ctree function is loaded which produces a slightly different tree, but with the same heirarchy of variables, supposedly partykit is an enhancement of the party package.
+# The benifit of using partykit is that you can control the size of the text so that people can actually read the tree
+# http://r.789695.n4.nabble.com/ctree-party-changing-font-sizes-in-plots-td907947.html
+library(partykit)
+arbolTodo=ctree(dData$intensityDif~dData$preceding_phone+dData$following_phone+dData$stressStatus+dData$wordFrequency+dData$grupo+dData$sexo)
+plot(arbolTodo, gp = gpar(fontsize = 20))
+```
+---
+
+#### Figuras 17: Árbol de inferencia condicional con las variables sociales
+```{r, echo=FALSE, fig.width=18, fig.height=10}
+arbolSocial=ctree(dData$intensityDif~dData$grupo+dData$sexo)
+plot(arbolSocial, gp = gpar(fontsize = 25))
+```
+---
+
+#### Figuras 18: Árbol de inferencia condicional con las variables lingüísticas
+```{r, echo=FALSE, fig.width=25, fig.height=12}
+arbolLinguistico=ctree(dData$intensityDif~dData$preceding_phone+dData$following_phone+dData$stressStatus+dData$wordFrequency)
+plot(arbolLinguistico, gp = gpar(fontsize = 25))
+```
+---
+
+class: center, middle, inverse
+
+# Método de efectos mixtos
+
+---
+#### Tabla 10: Factores aleatorios del modelo lineal de efectos mixtos: ítem léxico y hablante<sup>1</sup>
+```{r echo=FALSE}
+kable(factores_aleatorios)
+```
+
+#### Tabla 11<sup>1</sup>: Factores fijos del modelo lineal de efectos mixtos
+```{r, echo=FALSE}
+kable(factores_fijos ) %>% kable_styling() %>% scroll_box(width = "100%", height = "225px")
+```
+
+<br>
+<br>
+.footnote[
+[1] Modelos creados con Language Variation Suite `r Citep(myBib, 'scrivner2016')`)
+]
+
+---
+
+class: center, inverse, middle
+
+# Comentarios finales
+
+---
+
+1. Los datos en este estudio reafirman las observaciones dialectales con respeto a la /d/ intervocálica en México `r Citep(myBib, 'lope_blanch_atlas_1992')`
+--
+
+2. Facilita el entendimiento de la /d/ intervocálica como un fenómeno continuo como se ha hecho en otros dialectos del español
+--
+
+## Las preguntas de investigación
+
+> 1a) ¿Cambia el habla de los chihuahuenses que vienen a vivir a la CDMX, una nueva zona dialectal? Si es así, ¿cómo cambia?
+
+> 1b) ¿Acomodan sus rasgos fónicos a los de la variedad de la CDMX? ¿empiezan a producir variantes de la /d/ menos debilitadas?
+
+> 1c) Si es así: ¿Cuáles son los factores sociales, lingüísticos e identitarios que condicionan esta variación?
+
+---
+
+# Referencias (1/2)
+El reporte escrito se encuentra [Aquí](http://rpubs.com/axme100/piloto)
+
+
+```{r, 'refs2', results='asis', echo=FALSE}
+PrintBibliography(myBib, start = 1, end = 6)
+```
+
+---
+
+# Referencias (2/2)
+
+```{r, 'refs1', results='asis', echo=FALSE}
+PrintBibliography(myBib, start = 7, end = 9)
+```
