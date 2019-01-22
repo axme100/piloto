@@ -26,8 +26,66 @@ BibOptions(check.entries = FALSE,
 myBib <- ReadBib("/Users/maxcarey/Documents/tesis/Zotero.bib", check = FALSE)
 ```
 
+class: inverse, center, middle
 
-background-image: url(iloveuraccent.jpg)
+# Introducción
+
+---
+
+## ¿Por qué contacto dialectal?
+
+???
+
+- El **tema central** de mi tesis es uno de **contacto dialectal** entre el español de **chihuahua** y el de **la CDMX**
+
+--
+
+- Interés personal
+
+???
+
+- Eligí este tema porque siempre me han fascinado las diferentes formas de hablar
+
+--
+
+- Interdialecto `r Citep(myBib, 'trudgill_dialects_1986')`
+
+???
+
+- Además, es sumamente interesante porque cunado uno aprende otro dialecto: se habla de forma diferente al D1 y al D2
+
+--
+
+- Parecido al estudio de adquisición de nuevas lenguas `r Citep(myBib, 'siegel_second_2010')`
+
+???
+### Quería empezar con algunas diferencias con la L2
+
+- Parecida a la adquisición de segundas lenguas: se estudia la adquisición de nuevos sistemas lingüísticos.
+
+- CD suele ser:
+  a. En contextos naturalistas en lugar del salón de clase
+  b. Bajo un enfoque sociolingüístico variacionista en lugar del aprendizaje de lenguas
+  c. En AL2, el aprendiz adquiere un sistema nuevo, la L2, y se mantiene la L1. En SDA, se modifica el primer dialecto y sigue siendo un solo sistema.
+  -Depende del similitud entre los sistemas.
+
+- Tenía pensando una serie de variables segmentales (debilitamiento vocálico) pero solo me voy a quedar con uno al final
+
+- Me gustaría empezar con las preguntas de investigación
+
+--
+
+## Preguntas de investigación:
+
+> 1a) ¿Cambia el habla de los chihuahuenses que vienen a vivir a la CDMX, una nueva zona dialectal? Si es así, ¿cómo cambia?
+
+--
+
+> 1b) ¿Acomodan sus rasgos fónicos a los de la variedad de la CDMX? ¿empiezan a producir variantes de la /d/ menos debilitadas?
+
+--
+
+> 1c) Si es así: ¿Cuáles son los factores sociales, lingüísticos e identitarios que condicionan esta variación?
 
 ---
 
@@ -35,31 +93,59 @@ class: inverse, center, middle
 
 # Corpus
 
+???
+
+**Vamos a ver el corpus**
+
 ---
 
-# Tabla 1: Información sociodemográfica de los hablantes
+???
+
+- Para poder contestar estas preguntas de investigación voy a tener tres corpus.
+
+- 8-16-8 para el corpus entero
+
+- 4-4-4 para el corpus piloto que es esta análisis
 
 --
+
+# Tabla 1: Información sociodemográfica de los hablantes
 ```{r mostrar_tabla_hablantes, echo=FALSE}
 kable(speakerSocialData) %>%
   kable_styling() %>%
   scroll_box(width = "100%", height = "250px")
 ```
 
-- Datos recopilados durante el año académico 2017-2018
---
+- Datos recopilados durante el año académico 2017-2018 en la Ciudad de México
 
-- Las entrevistas de los chihuahuenses vienen del COEM
---
+- Las entrevistas de los chihuahuenses vienen del COEM (Butragueño, Mendoza, Orozco, en prep.)
 
-- Varios autores han usado medidas relativas de intensidad: tanto restas `r Citep(myBib, 'eddington_what_2011')` `r Citep(myBib, 'simonet_lenition_2012')` como proporciones `r Citep(myBib, 'carrasco2012')` `r Citep(myBib, 'scrivner2016')`
+???
+
+- Todo tienen entre 20-40 años de edad
+
+- Todos tienen estudios de licenciatura
+
+- Todos son profesionistas, como lo son una grand porcentaje de chihuahuenses en la CDMX
+
 
 ---
 class: inverse, center, middle
 
 # Variable dependiente
 
+--
+
+- Medidas relativas de intensidad: restas `r Citep(myBib, 'eddington_what_2011')` `r Citep(myBib, 'simonet_lenition_2012')` proporciones `r Citep(myBib, 'carrasco2012')` `r Citep(myBib, 'scrivner2016')`
+
+???
+
+- La variable dependiente de este estudio no se basa en categorías discretas. Sino una medida acústica continua
+
 ---
+
+
+
 #### Figura 1: Oscilograma, espectrograma, y contorno de intensidad de la palabra "frenada"
 --
 
@@ -79,7 +165,7 @@ Si estás viendo este mensaje, quiere decir que no puedes ver el audio, busca la
 - Pico de intensidad: 71.99 dB
 
 --
-- Índice de intensidad: 3.29 [(71.99 - 69.70) + 1)]
+- Índice de debilitamiento: 3.29 [(71.99 - 69.70) + 1)]
 
 ---
 #### Figura 2: Oscilograma, espectrograma, y contorno de intensidad de la frase “todos los camiones” (cdmx-in-situ-m-31-lic)
@@ -128,6 +214,12 @@ kable(variablesSociales)
 kable(variableLings)
 ```
 
+???
+
+- Nombrar cada variable, y explicar qué son
+
+- Si tienen preguntas de por qué fueron codificados como son, me los pueden hacer al final
+
 ---
 
 class: inverse, center, middle
@@ -144,8 +236,8 @@ class: inverse, center, middle
 # Grupo dialectal
 
 .pull-left[
-#### Figura 3: Ploteos de intensidad de la variable dependiente por los tres grupos (todos juntos)
-```{r, echo=FALSE, fig.height=6}
+#### Figura 3: Ploteos de intensidad de la variable dependiente por grupo dialectal
+```{r, echo=FALSE, fig.height=8, fig.width=12}
 ggplot(dData, aes(x = intensityDif, fill = grupo)) +
   geom_density(alpha = .3)
 ```
@@ -160,6 +252,14 @@ ggplot(dData, aes(x = intensityDif, fill = grupo)) +
 
 - 1.99 (menos debilitamiento) para los de la Ciudad de México in-situ.
 ]
+
+???
+
+1. Explicar los ejes de la figura
+2. Estas figura muestra **claramente** que los tres **se comportan** de forma diferente con respeto al /d/ intervocálica
+3. CHI-IN-SITU: Mucha concentración en valores bajos (muchas elisiones)
+4. CDMX-IN-SITU, su distribución extiend hacia valores mucho más altos
+5. El gurpo de inmigrantes (experimental), tiene una distribución bimodal
 ---
 
 class: center
@@ -190,6 +290,9 @@ p + stat_peaks(
   ignore_threshold = .5,
   size = 2)
 ```
+
+???
+- Tiene un segundo pico ubicado a 3.981 es decir representan tokens menos debilitados
 
 ---
 
@@ -225,12 +328,16 @@ ggplot(dData, aes(y = intensityDif, fill = sexo, x = sexo)) +
 
 - Interpretación de la tercera ola `r Citet(myBib, 'eckert_variation_2008-1')`
 
+]
+
+???
+
 - Los hombres expresando rasgos: “relajado”, y “buena onda”;
 
 - Mujeres podrían estar expresando identidades como “trabajadora” y “seria”.
 
+- Para grupo CHI-EN-CDMX, podría ser que los hombres están resaltando sus identidades como "chihuahuens"
 
-]
 ---
 
 class: inverse, center, middle
@@ -245,19 +352,6 @@ class: inverse, center, middle
 
 ---
 
-#### Tabla 4: Conteos y Porcentajes de la vocal previa por grupo dialectal
-```{r, echo=FALSE}
-kable(createTable(dData, "grupo", "preceding_phone"))
-```
-
-<br>
-
-#### Tabla 5: Conteos y Porcentajes de la vocal previa por grupo dialectal
-```{r, echo=FALSE}
-kable(createTable(dData, "grupo", "following_phone"))
-```
----
-
 class: center
 
 #### Figura 6: Ploteo de caja de la variable dependiente según la vocal previa y el grupo dialectal
@@ -268,6 +362,13 @@ ggplot(dData, aes(y = intensityDif, x = preceding_phone, fill = preceding_phone)
   geom_text(data = medianPreceding_phone, aes(label = round(intensityDif, digits=2), y = intensityDif + 0.6)) + #ggtitle("Distribución de la variable dependiente según la vocal previa") +
  scale_fill_brewer(palette="Spectral") + facet_wrap(~ grupo)
 ```
+
+???
+- Explicar la figura
+
+- Las vocales altas tienden a tener realizaciones menos debilitadas
+
+- Como son menos abiertos los gestos articulatorios tienen que viajar menos distancia para hacer una oclusión
 
 ---
 
@@ -282,6 +383,11 @@ ggplot(dData, aes(y = intensityDif, x = following_phone, fill = following_phone)
 # + ggtitle("Distribución de la variable dependiente según la vocal siguiente") +
  scale_fill_brewer(palette="Spectral") + facet_wrap(~ grupo)
 ```
+
+???
+
+- Quería mostrar que se observa el mismo patrón con las vocales siguientes
+
 ---
 
 class: center, inverse, middle
@@ -300,6 +406,13 @@ ggplot(dData, aes(y = intensityDif, x = stressStatus, fill = stressStatus)) +
 facet_wrap(~ grupo) + geom_text(data = medianStress, aes(label = round(intensityDif, digits=2), y = intensityDif + 0.6)) + scale_fill_brewer(palette="OrRd")
 
 ```
+
+???
+
+- Los *tokens* que vienen en sílabas tónicas suelen ser menos debilitados para los tres grupos dialectales
+
+- Esto ha sido llamado "fortalecimiento prosódico", pero como veremos más adelante este factor no fue selecionado como estadísticamente significativo. (Carrasco, Simonet, Hualde, 155)
+
 ---
 
 class: center, inverse, middle
@@ -310,7 +423,7 @@ class: center, inverse, middle
 
 class: center
 
-#### Figura 8: Diagramas de dipsersión de la variable dependiente y la frecuencia de token con una regresión lineal simple por grupo.
+#### Figura 9: Diagramas de dipsersión de la variable dependiente y la frecuencia de token con una regresión lineal simple por grupo.
 ```{r, echo=FALSE}
 # The Alpha value adds transparecy to each of the points on the scatter plot
 # Since by default, ggplot2 stacks values on top of each other that are the same, this can misrepresent the data and we can see where this occurs with the darker data points.
@@ -322,6 +435,14 @@ dData %>%
   # This comes from the gmisc package
   stat_poly_eq(formula = my.formula, aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")),parse = TRUE)
 ```
+
+???
+
+- Explicar el gráfico
+- Explicar la regresión lineal
+- Para todo los grupos dialectales, vemos una **relación negativa de moderada a fuerte**
+- Es decir, los tokens de mayor frecuencia suelen ser más debilitados
+
 ---
 
 class: center, middle, inverse
@@ -331,7 +452,7 @@ class: center, middle, inverse
 ---
 class: center
 
-#### Figura 9: Ploteos de caja de la variable dependiente por hablante (coloreado por grupo)
+#### Figura 10: Ploteos de caja de la variable dependiente por hablante (coloreado por grupo)
 ```{r, echo=FALSE}
 ggplot(dData, aes(y = intensityDif, x = speaker, color = grupo)) +
   geom_boxplot() + # ggtitle("Distribution of dependent variable by speaker") +
@@ -340,16 +461,28 @@ ggplot(dData, aes(y = intensityDif, x = speaker, color = grupo)) +
   ylab(expression(más_debilitamiento %<->% menos_debilitamiento))
 ```
 
+???
+
+- Importante tomar en cuenta la varaición individual ya que no todos los hablantes se portan de la misma forma
+
+- Puede ayudar a mostrar quienes son los inmigrantes que muestran o no acomodación
+
+- Esta figura, por ejemplo, nos podría dar la impresión que los hablantes 5 y 8 son los únicos que acomodan al nuevo dialecto ya que sus distribuciones se enceuntren claramente encime de las demás personas
+
 ---
 class: center
 
-#### Figura 10: Ploteos de densidad de la variable dependiente por hablante (coloreado por grupo)
+#### Figura 11: Ploteos de densidad de la variable dependiente por hablante (coloreado por grupo)
 ```{r, echo=FALSE}
 ggplot(dData, aes(x = intensityDif, color = grupo)) +
   geom_density() + facet_wrap(~ speaker) + ggtitle("Distribution of dependent variable by speaker") +
   # Acortar las etiquetas de eje horizontal
   scale_x_discrete(labels = c('1f','2m','3f', '4m', '5f', '6m', '7f', '8m', '9m', '10f','11f','12m'))
 ```
+
+???
+
+- Esta figura indica que probablemente todos los chihuahuenses en la CDMX, en mayor o menor grado, se hanacomodado al habla local, pues la multimodalidad de sus distribuciones es mucho más evidente en comparacióncon los demás grupos
 
 ---
 
@@ -361,7 +494,7 @@ class: center, middle, inverse
 class: center
 
 .pull-left[
-#### Figura 11: Nube de palabra de los ítems léxicos del grupo CHI-IN-SITU
+#### Figura 12: Nube de palabra de los ítems léxicos del grupo CHI-IN-SITU
 ```{r, echo=FALSE}
 wordcloud2(wordCloudDataOne, shape="diamond")
 ```
@@ -378,7 +511,7 @@ kable(wordCloudDataOne) %>%
 class: center
 
 .pull-left[
-#### Figuras 12: Nube de palabra de los ítems léxicos del grupo CHI-EN-CDMX
+#### Figuras 13: Nube de palabra de los ítems léxicos del grupo CHI-EN-CDMX
 ```{r, echo=FALSE}
 wordClouDataTwo <- dDataCHICDMX %>%
   select(Word) %>%
@@ -398,12 +531,20 @@ kable(wordClouDataTwo) %>%
 ```
 ]
 
+???
+
+- Es posible que las palabras conllevan pronunciaciones particulares, entonces quería mostrar cuáles eran las palabras más comunes para los tres grupos
+
+- Son muy parecidos entre los tres grupos
+
+- Los más comunes son "todo" y "nada", y "cada"
+
 ---
 
 class: center
 
 .pull-left[
-#### Figuras 13: Nube de palabra de los ítems léxicos del grupo CDMX-IN-SITU
+#### Figura 14: Nube de palabra de los ítems léxicos del grupo CDMX-IN-SITU
 ```{r, echo=FALSE}
 wordCloudDataThree <- dDataCDMXSITU %>%
   select(Word) %>%
@@ -428,6 +569,122 @@ kable(wordCloudDataThree) %>%
 class: center, middle, inverse
 
 # Estadística inferencial
+
+???
+
+- En mi tesis, voy a emplear diferentes diferentes pruebas estadísticas
+
+- Paramétricos y no paramétricos.
+
+- Voy a presentar los resultados del modelo de efectos mixtos
+
+---
+
+class: center, middle, inverse
+
+# Método de efectos mixtos
+
+???
+
+- Los modelos de efectos mixtos son esencialmente regresiones lineales múltiples. Pero contienen factores aleatorios que ayudan a tomar en cuenta:
+
+- (a) la naturaleza jerárquica de los datos (explicar)
+- (b) La relación no sistemática de algunos factores con relación a la variable dependiente (explicar)
+
+---
+#### Tabla 10: Factores aleatorios del modelo lineal de efectos mixtos: ítem léxico y hablante<sup>1</sup>
+```{r echo=FALSE}
+kable(factores_aleatorios)
+```
+
+#### Tabla 11<sup>1</sup>: Factores fijos del modelo lineal de efectos mixtos
+```{r, echo=FALSE}
+kable(factores_fijos ) %>% kable_styling() %>% scroll_box(width = "100%", height = "225px")
+```
+
+<br>
+<br>
+.footnote[
+[1] Modelos creados con Language Variation Suite `r Citep(myBib, 'scrivner2016')`)
+]
+
+???
+
+- El 3.01 % de la variación en el modelo se debe a los ítems - 
+-El 1 % se debe a los hablantes
+
+- El 10 % de la variación es inexplicable (residual).
+
+- vocalsiguiente=baja
+
+- vocal siguiente=media
+
+- vocal previa=media
+
+- grupo=CHI-IN-SITU,frecuencia_de_token,grupo=CHI-EN-CDMX
+
+- sexo=masculino.
+
+- Observación de la gradación de las variables
+
+---
+
+class: center, inverse, middle
+
+# Comentarios finales
+
+---
+
+- Los datos en este estudio reafirman las observaciones dialectales con respeto a la /d/ intervocálica en México `r Citep(myBib, 'lope_blanch_atlas_1992')`
+--
+
+- Facilita el entendimiento de la /d/ intervocálica como un fenómeno continuo como se ha hecho en otros dialectos del español
+--
+
+## Las preguntas de investigación
+
+> 1a) ¿Cambia el habla de los chihuahuenses que vienen a vivir a la CDMX, una nueva zona dialectal? Si es así, ¿cómo cambia?
+
+> 1b) ¿Acomodan sus rasgos fónicos a los de la variedad de la CDMX? ¿empiezan a producir variantes de la /d/ menos debilitadas?
+
+> 1c) Si es así: ¿Cuáles son los factores sociales, lingüísticos e identitarios que condicionan esta variación?
+
+- Los datos muestran evidencia a favor de la acomodación dialectal, a "formas intermedias"
+
+- ¿Un procesos automático? `r Citep(myBib, 'siegel_second_2010')` (p. 74) 
+
+???
+
+- En la adquisición de dialectos o segundas lenguas se ha hecho la distinción entre rasgos "implícitos", "explícitos"
+
+- Creo que los hablantes inmigrantes no están concientes del debilitamiento de la /d/:
+  a) Por lo menos, no como lo son con la /tS/
+
+- Entonces es posible que están adquiriendo estos nuevos hábitos fónicos bajo el nivel de conciencia
+  
+  
+
+---
+
+# Referencias (1/2)
+El reporte escrito se encuentra [Aquí](http://rpubs.com/axme100/piloto)
+
+
+```{r, 'refs2', results='asis', echo=FALSE}
+PrintBibliography(myBib, start = 1, end = 6)
+```
+
+---
+
+# Referencias (2/2)
+
+```{r, 'refs1', results='asis', echo=FALSE}
+PrintBibliography(myBib, start = 7, end = 9)
+```
+
+---
+
+background-image: url(iloveuraccent.jpg)
 
 ---
 
@@ -502,65 +759,18 @@ plot(arbolSocial, gp = gpar(fontsize = 25))
 arbolLinguistico=ctree(dData$intensityDif~dData$preceding_phone+dData$following_phone+dData$stressStatus+dData$wordFrequency)
 plot(arbolLinguistico, gp = gpar(fontsize = 25))
 ```
----
 
-class: center, middle, inverse
-
-# Método de efectos mixtos
 
 ---
-#### Tabla 10: Factores aleatorios del modelo lineal de efectos mixtos: ítem léxico y hablante<sup>1</sup>
-```{r echo=FALSE}
-kable(factores_aleatorios)
-```
 
-#### Tabla 11<sup>1</sup>: Factores fijos del modelo lineal de efectos mixtos
+#### Tabla 4: Conteos y Porcentajes de la vocal previa por grupo dialectal
 ```{r, echo=FALSE}
-kable(factores_fijos ) %>% kable_styling() %>% scroll_box(width = "100%", height = "225px")
+kable(createTable(dData, "grupo", "preceding_phone"))
 ```
 
 <br>
-<br>
-.footnote[
-[1] Modelos creados con Language Variation Suite `r Citep(myBib, 'scrivner2016')`)
-]
 
----
-
-class: center, inverse, middle
-
-# Comentarios finales
-
----
-
-1. Los datos en este estudio reafirman las observaciones dialectales con respeto a la /d/ intervocálica en México `r Citep(myBib, 'lope_blanch_atlas_1992')`
---
-
-2. Facilita el entendimiento de la /d/ intervocálica como un fenómeno continuo como se ha hecho en otros dialectos del español
---
-
-## Las preguntas de investigación
-
-> 1a) ¿Cambia el habla de los chihuahuenses que vienen a vivir a la CDMX, una nueva zona dialectal? Si es así, ¿cómo cambia?
-
-> 1b) ¿Acomodan sus rasgos fónicos a los de la variedad de la CDMX? ¿empiezan a producir variantes de la /d/ menos debilitadas?
-
-> 1c) Si es así: ¿Cuáles son los factores sociales, lingüísticos e identitarios que condicionan esta variación?
-
----
-
-# Referencias (1/2)
-El reporte escrito se encuentra [Aquí](http://rpubs.com/axme100/piloto)
-
-
-```{r, 'refs2', results='asis', echo=FALSE}
-PrintBibliography(myBib, start = 1, end = 6)
-```
-
----
-
-# Referencias (2/2)
-
-```{r, 'refs1', results='asis', echo=FALSE}
-PrintBibliography(myBib, start = 7, end = 9)
+#### Tabla 5: Conteos y Porcentajes de la vocal previa por grupo dialectal
+```{r, echo=FALSE}
+kable(createTable(dData, "grupo", "following_phone"))
 ```
