@@ -1,7 +1,7 @@
 ---
 title: "La lenición de la /d/ intervocálica de chihuahuenses en la Ciudad de México"
 subtitle: "Resultados del estudio piloto"
-author: "Max Carey"
+author: "Max Carey (Tutores: Érika Mendoza y Pedro Martín Butragueño)"
 date: "24/1/2019"
 output:
   xaringan::moon_reader:
@@ -64,10 +64,14 @@ class: inverse, center, middle
 - Parecida a la adquisición de segundas lenguas: se estudia la adquisición de nuevos sistemas lingüísticos.
 
 - CD suele ser:
-  a. En contextos naturalistas en lugar del salón de clase
-  b. Bajo un enfoque sociolingüístico variacionista en lugar del aprendizaje de lenguas
-  c. En AL2, el aprendiz adquiere un sistema nuevo, la L2, y se mantiene la L1. En SDA, se modifica el primer dialecto y sigue siendo un solo sistema.
-  -Depende del similitud entre los sistemas.
+  
+  - a. En contextos **naturales** en lugar del salón de clase
+  
+  - b. Bajo un enfoque sociolingüístico variacionista en lugar del aprendizaje de lenguas
+  
+  - c. En AL2, el aprendiz adquiere un sistema nuevo, la L2, y se mantiene la L1. En SDA, se modifica el primer dialecto y sigue siendo un solo sistema.
+  
+  - d. Depende del similitud entre los sistemas.
 
 - Tenía pensando una serie de variables segmentales (debilitamiento vocálico) pero solo me voy a quedar con uno al final
 
@@ -146,7 +150,7 @@ class: inverse, center, middle
 
 
 
-#### Figura 1: Oscilograma, espectrograma, y contorno de intensidad de la palabra "frenada"
+#### Figura 1: Oscilograma, espectrograma, y contorno de intensidad de la palabra "frenadas" (cdmx-in-situ-m-31-lic)
 --
 
 ```{r, out.width = "100%", out.height="375px", echo=FALSE}
@@ -236,7 +240,7 @@ class: inverse, center, middle
 # Grupo dialectal
 
 .pull-left[
-#### Figura 3: Ploteos de intensidad de la variable dependiente por grupo dialectal
+#### Figura 3: Ploteos de densidad de la variable dependiente por grupo dialectal
 ```{r, echo=FALSE, fig.height=8, fig.width=12}
 ggplot(dData, aes(x = intensityDif, fill = grupo)) +
   geom_density(alpha = .3)
@@ -423,78 +427,8 @@ class: center, inverse, middle
 
 class: center
 
-#### Figura 9: Diagramas de dipsersión de la variable dependiente y la frecuencia de token con una regresión lineal simple por grupo.
-```{r, echo=FALSE}
-# The Alpha value adds transparecy to each of the points on the scatter plot
-# Since by default, ggplot2 stacks values on top of each other that are the same, this can misrepresent the data and we can see where this occurs with the darker data points.
-my.formula <- y ~ x
-dData %>%
-  ggplot(aes(y = intensityDif, x = wordFrequency)) +
-  geom_point(alpha = 0.5, position = position_jitter(w = .1, h = 0)) +
-  geom_smooth(method = "lm", formula = my.formula) + facet_wrap(~ grupo) +
-  # This comes from the gmisc package
-  stat_poly_eq(formula = my.formula, aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")),parse = TRUE)
-```
-
-???
-
-- Explicar el gráfico
-- Explicar la regresión lineal
-- Para todo los grupos dialectales, vemos una **relación negativa de moderada a fuerte**
-- Es decir, los tokens de mayor frecuencia suelen ser más debilitados
-
----
-
-class: center, middle, inverse
-
-# Hablante
-
----
-class: center
-
-#### Figura 10: Ploteos de caja de la variable dependiente por hablante (coloreado por grupo)
-```{r, echo=FALSE}
-ggplot(dData, aes(y = intensityDif, x = speaker, color = grupo)) +
-  geom_boxplot() + # ggtitle("Distribution of dependent variable by speaker") +
-  # Acortar las etiquetas de eje horizontal
-  scale_x_discrete(labels = c('1f','2m','3f', '4m', '5f', '6m', '7f', '8m', '9m', '10f','11f','12m')) +
-  ylab(expression(más_debilitamiento %<->% menos_debilitamiento))
-```
-
-???
-
-- Importante tomar en cuenta la varaición individual ya que no todos los hablantes se portan de la misma forma
-
-- Puede ayudar a mostrar quienes son los inmigrantes que muestran o no acomodación
-
-- Esta figura, por ejemplo, nos podría dar la impresión que los hablantes 5 y 8 son los únicos que acomodan al nuevo dialecto ya que sus distribuciones se enceuntren claramente encime de las demás personas
-
----
-class: center
-
-#### Figura 11: Ploteos de densidad de la variable dependiente por hablante (coloreado por grupo)
-```{r, echo=FALSE}
-ggplot(dData, aes(x = intensityDif, color = grupo)) +
-  geom_density() + facet_wrap(~ speaker) + ggtitle("Distribution of dependent variable by speaker") +
-  # Acortar las etiquetas de eje horizontal
-  scale_x_discrete(labels = c('1f','2m','3f', '4m', '5f', '6m', '7f', '8m', '9m', '10f','11f','12m'))
-```
-
-???
-
-- Esta figura indica que probablemente todos los chihuahuenses en la CDMX, en mayor o menor grado, se hanacomodado al habla local, pues la multimodalidad de sus distribuciones es mucho más evidente en comparacióncon los demás grupos
-
----
-
-class: center, middle, inverse
-
-# Ítem léxico
-
----
-class: center
-
 .pull-left[
-#### Figura 12: Nube de palabra de los ítems léxicos del grupo CHI-IN-SITU
+#### Figura 9: Nube de palabra de los ítems léxicos del grupo CHI-IN-SITU
 ```{r, echo=FALSE}
 wordcloud2(wordCloudDataOne, shape="diamond")
 ```
@@ -511,7 +445,7 @@ kable(wordCloudDataOne) %>%
 class: center
 
 .pull-left[
-#### Figuras 13: Nube de palabra de los ítems léxicos del grupo CHI-EN-CDMX
+#### Figuras 10: Nube de palabra de los ítems léxicos del grupo CHI-EN-CDMX
 ```{r, echo=FALSE}
 wordClouDataTwo <- dDataCHICDMX %>%
   select(Word) %>%
@@ -544,7 +478,7 @@ kable(wordClouDataTwo) %>%
 class: center
 
 .pull-left[
-#### Figura 14: Nube de palabra de los ítems léxicos del grupo CDMX-IN-SITU
+#### Figura 11: Nube de palabra de los ítems léxicos del grupo CDMX-IN-SITU
 ```{r, echo=FALSE}
 wordCloudDataThree <- dDataCDMXSITU %>%
   select(Word) %>%
@@ -566,15 +500,76 @@ kable(wordCloudDataThree) %>%
 
 ---
 
+class: center
+
+#### Figura 12: Diagramas de dipsersión de la variable dependiente y la frecuencia de token con una regresión lineal simple por grupo.
+```{r, echo=FALSE}
+# The Alpha value adds transparecy to each of the points on the scatter plot
+# Since by default, ggplot2 stacks values on top of each other that are the same, this can misrepresent the data and we can see where this occurs with the darker data points.
+my.formula <- y ~ x
+dData %>%
+  ggplot(aes(y = intensityDif, x = wordFrequency)) +
+  geom_point(alpha = 0.5, position = position_jitter(w = .1, h = 0)) +
+  geom_smooth(method = "lm", formula = my.formula) + facet_wrap(~ grupo) +
+  # This comes from the gmisc package
+  stat_poly_eq(formula = my.formula, aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")),parse = TRUE)
+```
+
+???
+
+- Explicar el gráfico
+- Explicar la regresión lineal
+- Para todo los grupos dialectales, vemos una **relación negativa de moderada a fuerte**
+- Es decir, los tokens de mayor frecuencia suelen ser más debilitados
+
+---
+
+class: center, middle, inverse
+
+# Hablante
+
+---
+class: center
+
+#### Figura 13: Ploteos de caja de la variable dependiente por hablante (coloreado por grupo)
+```{r, echo=FALSE}
+ggplot(dData, aes(y = intensityDif, x = speaker, color = grupo)) +
+  geom_boxplot() + # ggtitle("Distribution of dependent variable by speaker") +
+  # Acortar las etiquetas de eje horizontal
+  scale_x_discrete(labels = c('1f','2m','3f', '4m', '5f', '6m', '7f', '8m', '9m', '10f','11f','12m')) +
+  ylab(expression(más_debilitamiento %<->% menos_debilitamiento))
+```
+
+???
+
+- Importante tomar en cuenta la varaición individual ya que no todos los hablantes se portan de la misma forma
+
+- Puede ayudar a mostrar quienes son los inmigrantes que muestran o no acomodación
+
+- Esta figura, por ejemplo, nos podría dar la impresión que los hablantes 5 y 8 son los únicos que acomodan al nuevo dialecto ya que sus distribuciones se enceuntren claramente encime de las demás personas
+
+---
+class: center
+
+#### Figura 14: Ploteos de densidad de la variable dependiente por hablante (coloreado por grupo)
+```{r, echo=FALSE}
+ggplot(dData, aes(x = intensityDif, color = grupo)) +
+  geom_density() + facet_wrap(~ speaker) + ggtitle("Distribution of dependent variable by speaker") +
+  # Acortar las etiquetas de eje horizontal
+  scale_x_discrete(labels = c('1f','2m','3f', '4m', '5f', '6m', '7f', '8m', '9m', '10f','11f','12m'))
+```
+
+???
+
+- Esta figura indica que probablemente todos los chihuahuenses en la CDMX, en mayor o menor grado, se hanacomodado al habla local, pues la multimodalidad de sus distribuciones es mucho más evidente en comparacióncon los demás grupos
+
+---
+
 class: center, middle, inverse
 
 # Estadística inferencial
 
 ???
-
-- En mi tesis, voy a emplear diferentes diferentes pruebas estadísticas
-
-- Paramétricos y no paramétricos.
 
 - Voy a presentar los resultados del modelo de efectos mixtos
 
@@ -636,9 +631,19 @@ class: center, inverse, middle
 ---
 
 - Los datos en este estudio reafirman las observaciones dialectales con respeto a la /d/ intervocálica en México `r Citep(myBib, 'lope_blanch_atlas_1992')`
+
+???
+
+- Enfatizar que es el primer trabajo que se basa en fonética acústica para estudiar el español de Chihuahua 
+
 --
 
-- Facilita el entendimiento de la /d/ intervocálica como un fenómeno continuo como se ha hecho en otros dialectos del español
+- Facilita el entendimiento de la /d/ intervocálica como un fenómeno continuo como se ha hecho en otros dialectos del español `r Citep(myBib, 'scrivner2016')`
+
+???
+
+- Muestra que no es una pura facilidad arituclatoria sino que hay diferencias dialectales entre estas dos regiones
+
 --
 
 ## Las preguntas de investigación
@@ -649,9 +654,8 @@ class: center, inverse, middle
 
 > 1c) Si es así: ¿Cuáles son los factores sociales, lingüísticos e identitarios que condicionan esta variación?
 
-- Los datos muestran evidencia a favor de la acomodación dialectal, a "formas intermedias"
+- Los datos muestran evidencia a favor de la acomodación dialectal, a "formas intermedias" (por una sola variable)
 
-- ¿Un procesos automático? `r Citep(myBib, 'siegel_second_2010')` (p. 74) 
 
 ???
 
