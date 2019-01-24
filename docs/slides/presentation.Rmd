@@ -2,7 +2,7 @@
 title: "La lenición de la /d/ intervocálica de chihuahuenses en la Ciudad de México"
 subtitle: "Resultados del estudio piloto"
 author: "Max Carey (Tutores: Érika Mendoza y Pedro Martín Butragueño)"
-date: "24/1/2019"
+date: "24/1/2019 (https://axme100.github.io/piloto/slides/presentation#1)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -240,7 +240,7 @@ class: inverse, center, middle
 #### Figura 3: Ploteos de densidad de la variable dependiente por grupo dialectal
 ```{r, echo=FALSE, fig.height=8, fig.width=12}
 ggplot(dData, aes(x = intensityDif, fill = grupo)) +
-  geom_density(alpha = .3)
+  geom_density(alpha = .3) + theme(legend.text=element_text(size=40), legend.key.size = unit(2, "cm"))
 ```
 --
 ]
