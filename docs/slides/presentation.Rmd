@@ -188,9 +188,6 @@ Si estás viendo este mensaje, quiere decir que no puedes ver el audio, busca la
 - No hay un valle de intensidad
 --
 
-- Se tomó ciertas medidas acústicas cualitativas (véase apéndice)
---
-
 - Los *tokens* de la /d/ intervocálica entre 600 y 1500 segundos.
 --
 
